@@ -8,6 +8,7 @@ yarn.lock
 
 _asserts/**/*.*
 coverage/
+communal/sw.js
 
 npm-debug.log
 *.txt
