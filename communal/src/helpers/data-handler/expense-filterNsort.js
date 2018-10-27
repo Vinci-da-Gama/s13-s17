@@ -1,5 +1,7 @@
 import moment from 'moment';
 
+import { Numbs, NagNumbs } from '../../consts/magic-numbers';
+
 // Get visible expenses
 
 export default (expenses, { text, sortBy, startDate, endDate }) => {
@@ -18,9 +20,9 @@ export default (expenses, { text, sortBy, startDate, endDate }) => {
 		})
 		.sort((a, b) => {
 			if (sortBy === 'date') {
-				return a.createdAt < b.createdAt ? 1 : -1;
+				return a.createdAt < b.createdAt ? Numbs.ONE : NagNumbs.NAG_ONE;
 			} else if (sortBy === 'amount') {
-				return a.amount < b.amount ? 1 : -1;
+				return a.amount < b.amount ? Numbs.ONE : NagNumbs.NAG_ONE;
 			} else {
 				return null;
 			}

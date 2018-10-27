@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle, CardText } from 'reactstrap';
+import PropTypes from 'prop-types';
+import { Card, Button, CardHeader, CardFooter, CardBody, CardTitle } from 'reactstrap';
+
+import { Numbs } from '../../consts/magic-numbers';
 
 class CounterCompo extends Component {
     constructor(props) {
@@ -14,17 +17,17 @@ class CounterCompo extends Component {
             case '+':
                 this.setState((preState) => {
                     return {
-                        counter: preState.counter + 1
+                        counter: preState.counter + Numbs.ONE
                     };
                 });
                 break;
             case '-':
                 this.setState((preState) => {
-                    if (preState.counter === 0) {
+                    if (preState.counter === Numbs.ZERO) {
                         return null;
                     } else {
                         return {
-                            counter: preState.counter - 1
+                            counter: preState.counter - Numbs.ONE
                         };
                     }
                 });
@@ -37,7 +40,7 @@ class CounterCompo extends Component {
     resetCounter() {
         this.setState(() => {
             return {
-                counter: 0
+                counter: Numbs.ZERO
             };
         });
     };

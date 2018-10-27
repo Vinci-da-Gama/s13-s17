@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Card, CardHeader, CardFooter, CardBody } from 'reactstrap';
 
 import InDecisionHeader from '../../components/indecision/Header';
@@ -6,6 +7,7 @@ import RandomPickupDecision from '../../components/indecision/PickupAction';
 import ShowOptions from '../../components/indecision/ShowOptions';
 import AddOpt from '../../components/indecision/AddOpt';
 import OptModal from '../../components/indecision/OptsModal';
+import { NagNumbs } from '../../consts/magic-numbers';
 
 class InDecisionCompo extends Component {
     constructor(props) {
@@ -68,7 +70,7 @@ class InDecisionCompo extends Component {
         console.log('68 -- ', opt);
         if (!opt) {
             return 'Please input option.';
-        } else if (this.state.options.indexOf(opt) > -1) {
+        } else if (this.state.options.indexOf(opt) > NagNumbs.NAG_ONE) {
             return 'This option is already existed.';
         } else {
             this.setState((preState) => ({
@@ -108,5 +110,8 @@ class InDecisionCompo extends Component {
         );
     }
 }
+
+InDecisionCompo.propTypes = {
+};
 
 export default InDecisionCompo;

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import UlCompo from './ul';
 import ResourceCompo from './resource';
+import { Numbs } from '../../consts/magic-numbers';
 
 export default ({ books, match }) => {
     const targetBook = books.find(({ id }) => id === match.params.bookId);
-    console.log('9 -- target book: ', targetBook);
-    if (books.length === 0 || !targetBook) {
+    if (books.length === Numbs.ZERO || !targetBook) {
         return (
             <div>
                 loading books...
@@ -30,4 +31,9 @@ export default ({ books, match }) => {
             </div>
         </div>
     );
+};
+
+this.propTypes = {
+    books: PropTypes.array,
+    match: PropTypes.object
 };

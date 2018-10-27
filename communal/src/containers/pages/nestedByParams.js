@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Route } from 'react-router-dom';
 
 import { getBooks } from '../../actions';
 import UlCompo from '../../components/contents/ul';
 import SigCompo from '../../components/contents/single-book';
+import { Numbs } from '../../consts/magic-numbers';
 
 class NestedBooksViaIdCompo extends Component {
+    static propTypes = {
+        books: PropTypes.array
+    };
 
     componentWillMount() {
         this.props.getBooks();
     }
 
     render() {
-        if (this.props.books.length === 0 || !this.props.books) {
+        if (this.props.books.length === Numbs.ZERO || !this.props.books) {
             return (
                 <div>
                     loading books...
@@ -34,9 +39,9 @@ class NestedBooksViaIdCompo extends Component {
     }
 };
 
-const mapStateToProps = (state) => {
-    return { books: state.books.books };
-};
+const mapStateToProps = (state) => ({
+    books: state.books.books
+});
 
 // const mapDispatchToProps = () => {
 // };

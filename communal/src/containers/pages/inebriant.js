@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { grabInebriants } from '../../actions';
 import { renderCards } from '../../helpers/render-cards';
@@ -30,6 +31,10 @@ class InebriantCompo extends Component {
 		);
 	}
 }
+
+InebriantCompo.propTypes = {
+    inebriants: PropTypes.array
+};
 
 const mapStateToProps = (state) => {
 	return (

@@ -1,7 +1,11 @@
-import { ADD_EXPENSE, REMOVE_EXPENSE, EDIT_EXPENSE } from '../types';
+import {
+	ADD_EXPENSE,
+	REMOVE_EXPENSE,
+	EDIT_EXPENSE,
+	SET_EXPENSES
+} from '../types';
 
 // Expenses Reducer
-
 const expensesReducerDefaultState = [];
 
 export default (state = expensesReducerDefaultState, action) => {
@@ -21,6 +25,8 @@ export default (state = expensesReducerDefaultState, action) => {
 					return expense;
 				}
 			});
+        case SET_EXPENSES:
+            return action.exps;
 		default:
 			return state;
 	}

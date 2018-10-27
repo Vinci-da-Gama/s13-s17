@@ -5,6 +5,7 @@ export const FETCH_MISS_CHILDREN = 'FETCH_MISS_CHILDREN';
 export const FETCH_PROPVAL_OBJ = 'FETCH_PROPVAL_OBJ';
 export const FETCH_BOOKS = 'FETCH_BOOKS';
 
+export const SET_EXPENSES = 'SET_EXPENSES';
 export const ADD_EXPENSE = 'ADD_EXPENSE';
 export const REMOVE_EXPENSE = 'REMOVE_EXPENSE';
 export const EDIT_EXPENSE = 'EDIT_EXPENSE';

@@ -11,6 +11,9 @@ export const ExpensesSummary = ({ expenseCount, expensesTotal }) => {
 
     return (
         <div className="bg-success">
+            <h2 className="text-warning">
+                Expense-Total-Summary
+            </h2>
             Viewing {expenseCount} {expenseWord} totalling {formattedExpensesTotal}
         </div>
     );
