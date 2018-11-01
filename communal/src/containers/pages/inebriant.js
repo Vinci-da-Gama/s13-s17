@@ -46,5 +46,4 @@ const mapStateToProps = (state) => {
     grabInebriants: () => {dispatch(grabInebriants())}
 }); */
 
-
 export default connect(mapStateToProps, { grabInebriants })(InebriantCompo);

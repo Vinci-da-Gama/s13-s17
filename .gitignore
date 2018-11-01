@@ -15,11 +15,6 @@ tmp.*
 
 .eslintrc.json
 
-wpkConfig/*
-.babelrc
-postcss.config.js
-webpack.config.babel.js
-communal/sw.js
 
 .env.test
 .env.dev

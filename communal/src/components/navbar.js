@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import {
 	Collapse, Navbar, NavbarToggler, NavbarBrand,
 	Nav, NavItem, NavLink, UncontrolledDropdown, DropdownToggle,
-	DropdownMenu, DropdownItem
+	DropdownMenu, DropdownItem, Button
 } from 'reactstrap';
 // if u need activeClassName attr, thus import NavLink as RRNavLink.
 import { NavLink as RRNavLink } from 'react-router-dom';
 
 // import brandImg from '../../img/logo.svg';
+import { startLogout } from '../actions/auth';
 
-class AppNavBarCompo extends Component {
+export class AppNavBarCompo extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -25,7 +27,7 @@ class AppNavBarCompo extends Component {
 
 	render() {
 		return (
-			<Navbar color="light" light expand="md">
+			<Navbar color="light" light expand="lg" className="fixed-top">
 				<NavbarBrand to="/" activeClassName="active" tag={RRNavLink} exact>
 					<img src="../../img/logo.svg" className="brand-navbar" alt="brand..." />
 					Show_Case
@@ -34,7 +36,7 @@ class AppNavBarCompo extends Component {
 				<Collapse isOpen={this.state.isOpen} navbar>
 					<Nav className="mx-auto" navbar>
 						<NavItem>
-							<NavLink to="/" activeClassName="active" tag={RRNavLink} exact>
+							<NavLink to="/dashboard" activeClassName="active" tag={RRNavLink} exact>
 								Expense_Dashboard
 							</NavLink>
 						</NavItem>
@@ -81,6 +83,26 @@ class AppNavBarCompo extends Component {
 								Books_With_Params_Id
 							</NavLink>
 						</NavItem>
+						<UncontrolledDropdown nav inNavbar>
+							<DropdownToggle nav caret>
+								User_Status
+							</DropdownToggle>
+							<DropdownMenu right>
+								{/* <DropdownItem>
+									<NavLink to="/" activeClassName="active" tag={RRNavLink} exact>
+										LogIn
+									</NavLink>
+								</DropdownItem>
+								<DropdownItem divider /> */}
+								<DropdownItem>
+									<Button color="danger" block outline
+                                        onClick={() => { this.props.startLogout(); }}
+                                        className="rounded-0">
+                                        LogOut
+                                    </Button>
+								</DropdownItem>
+							</DropdownMenu>
+						</UncontrolledDropdown>
 					</Nav>
 				</Collapse>
 			</Navbar>
@@ -88,4 +110,11 @@ class AppNavBarCompo extends Component {
 	}
 }
 
-export default AppNavBarCompo;
+/* const mapStateToProps = (state) => ({
+}); */
+
+const mapDispatchToProps = (dispatch) => ({
+    startLogout: () => dispatch(startLogout())
+});
+
+export default connect(null, mapDispatchToProps)(AppNavBarCompo);

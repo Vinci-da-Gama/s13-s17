@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Route } from 'react-router-dom';
 
 import UlCompo from './ul';
@@ -31,9 +30,4 @@ export default ({ books, match }) => {
             </div>
         </div>
     );
-};
-
-this.propTypes = {
-    books: PropTypes.array,
-    match: PropTypes.object
 };

@@ -3,6 +3,7 @@
 @import "./_general/mixins";
 @import "./_general/variables";
 @import "./compos/loader";
+@import "./_general/shared";
 
 body.basictorso {
 	@include extendFlex($zp);

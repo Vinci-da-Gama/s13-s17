@@ -1,3 +1,6 @@
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
+
 export const FETCH_INEBRIANT = 'FETCH_INEBRIANT';
 export const FETCH_HEALTH = 'FETCH_HEALTH';
 export const FETCH_COSMETIC = 'FETCH_COSMETIC';

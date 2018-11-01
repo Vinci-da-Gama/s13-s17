@@ -6,15 +6,14 @@ import ExpenseForm from './Expense_Form';
 import { startEditExpense, startRemoveExpense } from '../../actions/expenses';
 
 export class EditExpenseCompo extends Component {
-
     onSubmit(expense) {
         this.props.startEditExpense(this.props.expense.id, expense);
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
     }
 
     onRemove() {
         this.props.startRemoveExpense({ id: this.props.expense.id });
-        this.props.history.push('/');
+        this.props.history.push('/dashboard');
     }
 
     render() {
@@ -44,7 +43,8 @@ export class EditExpenseCompo extends Component {
 };
 
 const mapStateToProps = (state, props) => ({
-    expense: state.expenses.find((currExpense) => currExpense.id === props.match.params.id)
+    expense: state.expenses.find((currExpense) => currExpense.id === props.match.params.id),
+    isAuthen: !!state.auth.uid
 });
 
 const mapDispatchToProps = (dispatch, props) => ({

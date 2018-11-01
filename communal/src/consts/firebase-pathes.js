@@ -1,3 +1,3 @@
-export default {
-    expenses: 'expenses'
-};
+export default (uid) => (
+    `users/${uid}/expenses`
+);

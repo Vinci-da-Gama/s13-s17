@@ -12,8 +12,9 @@ const config = {
 firebase.initializeApp(config);
 
 const fDb = firebase.database();
+const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firebase, fDb as default };
+export { firebase, googleAuthProvider, fDb as default };
 
 /* fDb.ref('singlePerson').set({
     name: 'AAA bbb',

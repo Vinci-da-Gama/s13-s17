@@ -22,6 +22,7 @@ export const ExpenseListCompo = (props) => (
 );
 
 const mapStateToProps = (state) => {
+    console.log('25 -- state.expenses: ', state.expenses);
     return {
         expenses: selectExpenses(state.expenses, state.setValViaFilters)
     };

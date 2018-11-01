@@ -11,8 +11,13 @@ export class ExpenseListFilter extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            calendarFocused: null
+            calendarFocused: null,
+            shouldDisabled: false
         };
+    }
+
+    setFirstOptDisabled() {
+        this.setState({ shouldDisabled: 'disabled' });
     }
 
     onDatesChange({ startDate, endDate }) {
@@ -55,7 +60,11 @@ export class ExpenseListFilter extends Component {
                         <Input type="select" name="lf_sortbydateOramount"
                             id="lf_sortbydateOramountId" className="rounded-0 select-rightcorner"
                             value={this.props.setValViaFilters.sortBy}
-                            onChange={(event) => { this.onSortChange(event); }}>
+                            onChange={(event) => { this.onSortChange(event); }}
+                            onClick={() => { this.setFirstOptDisabled(); }}>
+                            <option defaultValue="" disabled={this.state.shouldDisabled}>
+                                Please Select
+                            </option>
                             <option value="date">Date</option>
                             <option value="amount">Amount</option>
                         </Input>

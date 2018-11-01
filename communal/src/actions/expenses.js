@@ -13,7 +13,8 @@ export const addExpense = (expense) => ({
 });
 
 export const startAddExpense = (expenseData = {}) => {
-    return (dispatch) => {
+    return (dispatch, getState) => {
+        const uaePath = fbPathes(getState().auth.uid);
         const {
             description = '',
             note = '',
@@ -21,7 +22,7 @@ export const startAddExpense = (expenseData = {}) => {
             createdAt = Numbs.ZERO
         } = expenseData;
         const expense = { description, note, amount, createdAt };
-        return fDb.ref(fbPathes.expenses).push(expense)
+        return fDb.ref(uaePath).push(expense)
         .then((resp) => {
             dispatch(addExpense({
                 id: resp.key,
@@ -29,7 +30,7 @@ export const startAddExpense = (expenseData = {}) => {
             }));
         })
         .catch((err) => {
-            console.log('31 -- err: ', err);
+            console.log('33 -- err: ', err);
         });
     };
 };
@@ -40,8 +41,10 @@ export const setExpenses = (exps) => ({
 });
 
 export const startSetExpenses = () => {
-    return (dispatch) => {
-        return fDb.ref(fbPathes.expenses).once('value')
+    return (dispatch, getState) => {
+        const usePath = fbPathes(getState().auth.uid);
+        return fDb.ref(usePath)
+        .once('value')
         .then((resp) => {
             const expenses = [];
             resp.forEach((elem, idx) => {
@@ -50,10 +53,11 @@ export const startSetExpenses = () => {
                     ...elem.val()
                 });
             });
+            console.log('56 -- ', expenses);
             dispatch(setExpenses(expenses));
         })
         .catch((err) => {
-            console.log('55 -- err: ', err);
+            console.log('59 -- err: ', err);
         });
     };
 };
@@ -65,14 +69,16 @@ export const removeExpense = ({ id } = {}) => ({
 });
 
 export const startRemoveExpense = ({ id } = {}) => {
-    return (dispatch) => {
-        return fDb.ref(`${fbPathes.expenses}/${id}`).remove()
+    return (dispatch, getState) => {
+        const urePath = `${fbPathes(getState().auth.uid)}/${id}`;
+        return fDb.ref(urePath)
+        .remove()
         .then((resp) => {
             // remove api will return undefined: resp = undefined
             dispatch(removeExpense({ id }));
         })
         .catch((err) => {
-            console.log('74 -- ', err);
+            console.log('80 -- ', err);
         });
     };
 };
@@ -85,12 +91,14 @@ export const editExpense = (id, updates) => ({
 });
 
 export const startEditExpense = (id, updates) => {
-    return (dispatch) => {
-        return fDb.ref(`${fbPathes.expenses}/${id}`).update(updates)
+    return (dispatch, getState) => {
+        const ueePath = `${fbPathes(getState().auth.uid)}/${id}`;
+        return fDb.ref(ueePath)
+        .update(updates)
         .then(() => {
             dispatch(editExpense(id, updates));
         }).catch((err) => {
-            console.log('92 -- ', err);
+            console.log('100 -- ', err);
         });
     };
 };
