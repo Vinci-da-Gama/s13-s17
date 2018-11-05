@@ -19,7 +19,7 @@
     "npm": ">=6.4.1",
     "yarn": ">=1.9.4"
   },
-  "keywords": [],
+  "keywords": ["react", "babel7"],
   "author": "",
   "license": "MIT",
   "peerDependencies": {
