@@ -15,8 +15,6 @@ tmp.*
 
 .eslintrc.json
 
-
-
 .env.test
 .env.dev
 
